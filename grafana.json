@@ -206,7 +206,7 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 118
+                "value": 106
               }
             ]
           },
@@ -219,6 +219,18 @@
               {
                 "id": "custom.width",
                 "value": 136
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Номер"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 77
               }
             ]
           }
@@ -259,6 +271,7 @@
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": true,
+          "interval": "",
           "legendFormat": "__auto",
           "range": false,
           "refId": "A",
@@ -278,31 +291,32 @@
               "host": true,
               "instance": true,
               "job": true,
-              "meterNumber": true,
+              "meterNumber": false,
               "meterUnit": true,
               "port": true
             },
             "includeByName": {},
             "indexByName": {
-              "Time": 5,
+              "Time": 6,
               "Value": 13,
-              "__name__": 6,
+              "__name__": 7,
               "accountName": 0,
-              "app": 7,
-              "dateAttorney": 2,
+              "app": 8,
+              "dateAttorney": 4,
               "dateReceived": 3,
-              "host": 8,
-              "instance": 9,
-              "job": 10,
-              "meterNumber": 11,
+              "host": 9,
+              "instance": 10,
+              "job": 11,
+              "meterNumber": 2,
               "meterType": 1,
-              "meterUnit": 4,
+              "meterUnit": 5,
               "port": 12
             },
             "renameByName": {
               "accountName": "Квартира",
-              "dateAttorney": "Дата следующей поверки",
-              "dateReceived": "Дата последней передачит показаний",
+              "dateAttorney": "Поверка",
+              "dateReceived": "Показания переданы",
+              "meterNumber": "Номер",
               "meterType": "Счётчик"
             }
           }
@@ -477,8 +491,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -525,7 +538,7 @@
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "[{{meterNumber}}] {{meterType}} ({{meterUnit}})",
+          "legendFormat": "{{meterNumber}} | {{meterType}} ({{meterUnit}})",
           "range": true,
           "refId": "A",
           "useBackend": false
@@ -581,8 +594,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -629,7 +641,7 @@
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "[{{meterNumber}}] {{meterType}} ({{meterUnit}})",
+          "legendFormat": "{{meterNumber}} | {{meterType}} ({{meterUnit}})",
           "range": true,
           "refId": "A",
           "useBackend": false
@@ -670,13 +682,13 @@
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MosOblEIRC",
   "uid": "mosobleirc",
-  "version": 27,
+  "version": 30,
   "weekStart": ""
 }
