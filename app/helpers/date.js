@@ -1,6 +1,8 @@
-/** */
-export const getDateYMD = () => {
-    const date = new Date();
+/**
+ * @param {string} [init]
+ */
+export const getDateYMD = init => {
+    const date = init ? new Date(init) : new Date();
 
     const year = date.getFullYear();
     const month = date.getMonth();

@@ -54,15 +54,26 @@ class MosOblEIRC {
         return {'X-Auth-Tenant-Token': token};
     }
 
+    /**
+     * @returns {Promise<Array>}
+     */
     async getAccountsData() {
         const {items} = await this._getCacheAuth('/api/clients/configuration-items');
         return items;
     }
 
+    /**
+     * @param {string|number} id
+     * @returns {Promise<Array>}
+     */
     async getMetersByAccountId(id) {
         return await this._getCacheAuth(`/api/clients/meters/for-item/${id}`);
     }
 
+    /**
+     * @param {string|number} id
+     * @returns {Promise<Array>}
+     */
     async getChargeByPersonalAccountId(id) {
         const {chargeDetails} = await this._getCacheAuth(`/api/personal_account/charge-details/${id}`, {
             searchParams: {
@@ -71,6 +82,25 @@ class MosOblEIRC {
         });
 
         return chargeDetails;
+    }
+
+    /**
+     * @returns {Promise<Array>}
+     */
+    async getAllMeters() {
+        const accounts = await this.getAccountsData();
+
+        const metersByAccount = await Promise.all(accounts.map(async account => {
+            const meters = await this.getMetersByAccountId(account.id);
+
+            meters.forEach(meter => {
+                meter.__account = {name: account.name};
+            });
+
+            return meters;
+        }));
+
+        return metersByAccount.flat();
     }
 
 }

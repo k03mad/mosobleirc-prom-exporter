@@ -3,10 +3,9 @@ import {getCurrentFilename} from '../helpers/paths.js';
 
 export default {
     name: getCurrentFilename(import.meta.url),
-    help: 'Charge',
+    help: 'Charges',
     labelNames: [
         'accountName',
-        'accountId',
         'service',
         'measure',
     ],
@@ -22,7 +21,6 @@ export default {
             charges.forEach(charge => {
                 ctx.labels(
                     account.name,
-                    account.id,
                     charge.nm_service,
                     charge.nm_measure_unit,
                 ).set(Number(charge.sm_total));
