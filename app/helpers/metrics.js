@@ -4,8 +4,8 @@
  */
 export const renameToRu = name => {
     const renames = {
-        KILOWATT_HOUR: 'кВт⋅ч',
-        METERS: 'м³',
+        KILOWATT_HOUR: 'кВт*ч',
+        METERS: 'куб.м.',
 
         ColdWater: 'Холодная вода',
         HotWater: 'Горячая вода',
