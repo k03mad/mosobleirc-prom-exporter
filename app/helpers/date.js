@@ -1,16 +1,31 @@
+const prefixZero = datePart => String(datePart).length === 1
+    ? `0${datePart}`
+    : datePart;
+
 /**
  * @param {string} [init]
  */
 export const getDateYMD = init => {
     const date = init ? new Date(init) : new Date();
 
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-
     return [
-        year,
-        String(month).length === 1 ? `0${month}` : month,
-        String(day).length === 1 ? `0${day}` : day,
-    ].join('-');
+        date.getFullYear(),
+        date.getMonth() + 1,
+        date.getDate(),
+    ].map(elem => prefixZero(elem)).join('-');
+};
+
+/**
+ * @param {string} [init]
+ */
+export const getDateYMDHMS = init => {
+    const date = init ? new Date(init) : new Date();
+
+    const hms = [
+        date.getHours(),
+        date.getMinutes(),
+        date.getSeconds(),
+    ].map(elem => prefixZero(elem)).join(':');
+
+    return `${getDateYMD(init)} ${hms}`;
 };

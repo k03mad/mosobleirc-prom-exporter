@@ -1,4 +1,5 @@
 import MosOblEIRC from '../api/mosobleirc.js';
+import {getDateYMDHMS} from '../helpers/date.js';
 import {renameToRu} from '../helpers/metrics.js';
 import {getCurrentFilename} from '../helpers/paths.js';
 
@@ -26,7 +27,7 @@ export default {
                 meter.number,
                 renameToRu(meter.type),
                 renameToRu(meter.unit),
-                meter.lastValue.receivedDate,
+                getDateYMDHMS(meter.lastValue.receivedDate),
                 meter.attorneyDeadline,
             ).set(1);
         });
