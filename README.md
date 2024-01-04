@@ -12,12 +12,12 @@
 ```bash
 # one time
 npm i pnpm -g
-pnpm run setup
+npm run setup
 
 # start app
-pnpm run start --phone=+71230001122 --password=123 --port=11000
+npm run start --phone=+71230001122 --password=123 --port=11000
 # or with envs
-MOSOBLEIRC_PHONE=+71230001122 MOSOBLEIRC_PASSWORD=123 MOSOBLEIRC_EXPORTER_PORT=11000 pnpm run start
+MOSOBLEIRC_PHONE=+71230001122 MOSOBLEIRC_PASSWORD=123 MOSOBLEIRC_EXPORTER_PORT=11000 npm run start
 ```
 
 — Update Prometheus `scrape_configs` \
