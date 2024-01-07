@@ -1,7 +1,7 @@
 import {requestCache} from '@k03mad/request';
 
 import env from '../../env.js';
-import {getDateYMD} from '../helpers/date.js';
+import {getDateHMS, getDateYMD} from '../helpers/date.js';
 
 /** */
 class MosOblEIRC {
@@ -13,6 +13,12 @@ class MosOblEIRC {
 
         this.reqOpts = {
             cacheResponseSec: 3600,
+        };
+
+        // HHmmss
+        this.lkkWorks = {
+            from: '060000',
+            to: '230000',
         };
     }
 
@@ -39,6 +45,28 @@ class MosOblEIRC {
     async _getCacheAuth(path, options = {}) {
         const headers = await this.getAuthHeaders();
         return await this._getCache(path, {...options, headers});
+    }
+
+    /**
+     * @param {string} name
+     * @returns {string}
+     */
+    renameStringsToRu(name) {
+        const renames = {
+            KILOWATT_HOUR: 'кВт*ч',
+            METERS: 'куб.м.',
+
+            ColdWater: 'Холодная вода',
+            HotWater: 'Горячая вода',
+            Electricity: 'Электричество',
+        };
+
+        return renames[name] || name;
+    }
+
+    isWorkingTime() {
+        const hms = Number(getDateHMS({hmsSeparator: ''}));
+        return Boolean(hms > Number(this.lkkWorks.from) && hms < Number(this.lkkWorks.to));
     }
 
     async getAuthHeaders() {

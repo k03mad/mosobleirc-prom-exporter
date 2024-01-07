@@ -3,11 +3,11 @@ const prefixZero = datePart => String(datePart).length === 1
     : datePart;
 
 /**
- * @param {number|string} [init]
  * @param {object} [opts]
+ * @param {number|string} [opts.init]
  * @param {string} [opts.ymdSeparator]
  */
-export const getDateYMD = (init, {ymdSeparator = '-'} = {}) => {
+export const getDateYMD = ({init, ymdSeparator = '-'} = {}) => {
     const date = init ? new Date(init) : new Date();
 
     return [
@@ -18,20 +18,29 @@ export const getDateYMD = (init, {ymdSeparator = '-'} = {}) => {
 };
 
 /**
- * @param {string} [init]
  * @param {object} [opts]
- * @param {string} [opts.ymdSeparator]
+ * @param {number|string} [opts.init]
  * @param {string} [opts.hmsSeparator]
  */
-export const getDateYMDHMS = (init, {ymdSeparator = '-', hmsSeparator = ':'} = {}) => {
+export const getDateHMS = ({init, hmsSeparator = ':'} = {}) => {
     const date = init ? new Date(init) : new Date();
-    const ymd = getDateYMD(init, {ymdSeparator});
 
-    const hms = [
+    return [
         date.getHours(),
         date.getMinutes(),
         date.getSeconds(),
     ].map(elem => prefixZero(elem)).join(hmsSeparator);
+};
+
+/**
+ * @param {object} [opts]
+ * @param {number|string} [opts.init]
+ * @param {string} [opts.ymdSeparator]
+ * @param {string} [opts.hmsSeparator]
+ */
+export const getDateYMDHMS = ({init, ymdSeparator = '-', hmsSeparator = ':'} = {}) => {
+    const ymd = getDateYMD({init, ymdSeparator});
+    const hms = getDateHMS({init, hmsSeparator});
 
     return `${ymd} ${hms}`;
 };

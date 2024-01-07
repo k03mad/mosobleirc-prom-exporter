@@ -1,6 +1,5 @@
 import MosOblEIRC from '../api/mosobleirc.js';
 import {getDateYMDHMS} from '../helpers/date.js';
-import {renameToRu} from '../helpers/metrics.js';
 import {getCurrentFilename} from '../helpers/paths.js';
 
 export default {
@@ -17,19 +16,21 @@ export default {
     ],
 
     async collect(ctx) {
-        ctx.reset();
+        if (MosOblEIRC.isWorkingTime()) {
+            ctx.reset();
 
-        const meters = await MosOblEIRC.getAllMeters();
+            const meters = await MosOblEIRC.getAllMeters();
 
-        meters.forEach(({__account, meter}) => {
-            ctx.labels(
-                __account.name,
-                meter.number,
-                renameToRu(meter.type),
-                renameToRu(meter.unit),
-                getDateYMDHMS(meter.lastValue.receivedDate),
-                meter.attorneyDeadline,
-            ).set(1);
-        });
+            meters.forEach(({__account, meter}) => {
+                ctx.labels(
+                    __account.name,
+                    meter.number,
+                    MosOblEIRC.renameStringsToRu(meter.type),
+                    MosOblEIRC.renameStringsToRu(meter.unit),
+                    getDateYMDHMS({init: meter.lastValue.receivedDate}),
+                    meter.attorneyDeadline,
+                ).set(1);
+            });
+        }
     },
 };
