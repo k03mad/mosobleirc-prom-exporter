@@ -17,8 +17,8 @@ class MosOblEIRC {
 
         // HHmmss
         this.lkkWorks = {
-            from: '060000',
-            to: '230000',
+            from: '061000',
+            to: '225000',
         };
     }
 
