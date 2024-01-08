@@ -92,7 +92,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -230,7 +230,19 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 77
+                "value": 135
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Показания переданы"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 171
               }
             ]
           }
@@ -254,7 +266,12 @@
           "show": false
         },
         "showHeader": true,
-        "sortBy": []
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "Поверка"
+          }
+        ]
       },
       "pluginVersion": "10.2.3",
       "targets": [
@@ -372,7 +389,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -477,7 +494,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -580,7 +597,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -682,13 +699,13 @@
     ]
   },
   "time": {
-    "from": "now-7d",
+    "from": "now-90d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MosOblEIRC",
   "uid": "mosobleirc",
-  "version": 30,
+  "version": 37,
   "weekStart": ""
 }
