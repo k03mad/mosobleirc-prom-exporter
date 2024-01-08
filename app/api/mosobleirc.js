@@ -48,68 +48,11 @@ class MosOblEIRC {
     }
 
     /**
-     * @param {string} name
-     * @returns {string}
-     */
-    renameStringsToRu(name) {
-        const renames = {
-            KILOWATT_HOUR: 'кВт*ч',
-            METERS: 'куб.м.',
-
-            ColdWater: 'Холодная вода',
-            HotWater: 'Горячая вода',
-            Electricity: 'Электричество',
-        };
-
-        return renames[name] || name;
-    }
-
-    isWorkingTime() {
-        const hms = Number(getDateHMS({hmsSeparator: ''}));
-        return Boolean(hms > Number(this.lkkWorks.from) && hms < Number(this.lkkWorks.to));
-    }
-
-    async getAuthHeaders() {
-        const {token} = await this._getCache('/tenants-registration/v2/login', {
-            method: 'POST',
-            json: {
-                phone: env.mosobleirc.phone,
-                password: env.mosobleirc.password,
-                loginMethod: 'PERSONAL_OFFICE',
-            },
-        });
-
-        return {'X-Auth-Tenant-Token': token};
-    }
-
-    /**
      * @returns {Promise<Array>}
      */
     async getAccountsData() {
         const {items} = await this._getCacheAuth('/api/clients/configuration-items');
         return items;
-    }
-
-    /**
-     * @param {string|number} id
-     * @returns {Promise<Array>}
-     */
-    async getMetersByAccountId(id) {
-        return await this._getCacheAuth(`/api/clients/meters/for-item/${id}`);
-    }
-
-    /**
-     * @param {string|number} id
-     * @returns {Promise<Array>}
-     */
-    async getChargeByPersonalAccountId(id) {
-        const {chargeDetails} = await this._getCacheAuth(`/api/personal_account/charge-details/${id}`, {
-            searchParams: {
-                date: getDateYMD(),
-            },
-        });
-
-        return chargeDetails;
     }
 
     /**
@@ -129,6 +72,63 @@ class MosOblEIRC {
         }));
 
         return metersByAccount.flat();
+    }
+
+    async getAuthHeaders() {
+        const {token} = await this._getCache('/tenants-registration/v2/login', {
+            method: 'POST',
+            json: {
+                phone: env.mosobleirc.phone,
+                password: env.mosobleirc.password,
+                loginMethod: 'PERSONAL_OFFICE',
+            },
+        });
+
+        return {'X-Auth-Tenant-Token': token};
+    }
+
+    /**
+     * @param {string|number} id
+     * @returns {Promise<Array>}
+     */
+    async getChargeByPersonalAccountId(id) {
+        const {chargeDetails} = await this._getCacheAuth(`/api/personal_account/charge-details/${id}`, {
+            searchParams: {
+                date: getDateYMD(),
+            },
+        });
+
+        return chargeDetails;
+    }
+
+    /**
+     * @param {string|number} id
+     * @returns {Promise<Array>}
+     */
+    async getMetersByAccountId(id) {
+        return await this._getCacheAuth(`/api/clients/meters/for-item/${id}`);
+    }
+
+    isWorkingTime() {
+        const hms = Number(getDateHMS({hmsSeparator: ''}));
+        return Boolean(hms > Number(this.lkkWorks.from) && hms < Number(this.lkkWorks.to));
+    }
+
+    /**
+     * @param {string} name
+     * @returns {string}
+     */
+    renameStringsToRu(name) {
+        const renames = {
+            KILOWATT_HOUR: 'кВт*ч',
+            METERS: 'куб.м.',
+
+            ColdWater: 'Холодная вода',
+            HotWater: 'Горячая вода',
+            Electricity: 'Электричество',
+        };
+
+        return renames[name] || name;
     }
 
 }
