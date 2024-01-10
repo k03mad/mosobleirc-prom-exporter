@@ -1,7 +1,7 @@
 import {requestCache} from '@k03mad/request';
+import {getDateHMS, getDateYMD} from '@k03mad/simple-date';
 
 import env from '../../env.js';
-import {getDateHMS, getDateYMD} from '../helpers/date.js';
 
 /** */
 class MosOblEIRC {

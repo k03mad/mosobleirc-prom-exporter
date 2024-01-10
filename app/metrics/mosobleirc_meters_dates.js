@@ -1,5 +1,6 @@
+import {getDateYMDHMS} from '@k03mad/simple-date';
+
 import MosOblEIRC from '../api/mosobleirc.js';
-import {getDateYMDHMS} from '../helpers/date.js';
 import {getCurrentFilename} from '../helpers/paths.js';
 
 export default {
