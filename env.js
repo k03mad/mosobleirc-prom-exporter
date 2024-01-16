@@ -1,5 +1,6 @@
+import {logErrorExit} from '@k03mad/simple-log';
+
 import {errorText} from './app/helpers/colors.js';
-import {throwError} from './app/helpers/logging.js';
 
 const env = {
     server: {
@@ -23,7 +24,7 @@ Object.entries(env.mosobleirc).forEach(([key, value]) => {
 });
 
 if (missedEnvNames.length > 0) {
-    throwError([
+    logErrorExit([
         errorText(` MosOblEIRC [${missedEnvNames.join(' + ')}] is not specified `),
         '> use env variables or npm parameters',
         '> see readme',
