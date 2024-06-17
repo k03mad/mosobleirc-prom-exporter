@@ -25,3 +25,4 @@ MOSOBLEIRC_PHONE=+71230001122 MOSOBLEIRC_PASSWORD=123 MOSOBLEIRC_EXPORTER_PORT=1
 
 — Update Prometheus `scrape_configs` \
 — [Import Grafana dashboard](grafana)
+
