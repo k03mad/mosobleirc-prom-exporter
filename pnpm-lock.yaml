@@ -12,8 +12,8 @@ importers:
         specifier: 5.8.1
         version: 5.8.1
       '@k03mad/simple-date':
-        specifier: 1.1.0
-        version: 1.1.0
+        specifier: 1.1.1
+        version: 1.1.1
       '@k03mad/simple-log':
         specifier: 2.2.1
         version: 2.2.1
@@ -100,6 +100,10 @@ packages:
 
   '@k03mad/simple-date@1.1.0':
     resolution: {integrity: sha512-ZzvlFyR49yaGXrgwvePb3LGip0OfCuh67ZFUEfJRYHHsTLkcOlgY48z5+C+z/nzLIxt+s6ZKw8L9VCVZLqh35Q==}
+    engines: {node: '>=20'}
+
+  '@k03mad/simple-date@1.1.1':
+    resolution: {integrity: sha512-PNc1AdQ/8ZL/cJ8aFV25NFBVGvdvUEW5slGd/D26Pn9a2+0YdRxKHT8fIeVX/FOS5ORIsBHDPyoHrugp8gcJ1g==}
     engines: {node: '>=20'}
 
   '@k03mad/simple-log@2.2.0':
@@ -1817,6 +1821,8 @@ snapshots:
       - supports-color
 
   '@k03mad/simple-date@1.1.0': {}
+
+  '@k03mad/simple-date@1.1.1': {}
 
   '@k03mad/simple-log@2.2.0':
     dependencies:
