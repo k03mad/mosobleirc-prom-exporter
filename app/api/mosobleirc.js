@@ -94,7 +94,7 @@ class MosOblEIRC {
     async getChargeByPersonalAccountId(id) {
         const {chargeDetails} = await this._getCacheAuth(`/api/personal_account/charge-details/${id}`, {
             searchParams: {
-                date: getDateYMD(),
+                date: getDateYMD({separator: '-'}),
             },
         });
 
@@ -110,7 +110,7 @@ class MosOblEIRC {
     }
 
     isWorkingTime() {
-        const hms = Number(getDateHMS({hmsSeparator: ''}));
+        const hms = Number(getDateHMS({separator: ''}));
         return Boolean(hms > Number(this.lkkWorks.from) && hms < Number(this.lkkWorks.to));
     }
 
