@@ -5,8 +5,8 @@ import {errorText} from './app/helpers/colors.js';
 const env = {
     server: {
         port: process.env.npm_config_port
-        || process.env.MOSOBLEIRC_EXPORTER_PORT
-        || 11_013,
+            || process.env.MOSOBLEIRC_EXPORTER_PORT
+            || 11_013,
     },
     mosobleirc: {
         phone: process.env.npm_config_phone || process.env.MOSOBLEIRC_PHONE,
