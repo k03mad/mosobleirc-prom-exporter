@@ -1,13 +1,3 @@
-• [ctrld-prom-exporter](https://github.com/k03mad/ctrld-prom-exporter) \
-• [mik-prom-exporter](https://github.com/k03mad/mik-prom-exporter) \
-• mosobleirc-prom-exporter \
-• [ping-prom-exporter](https://github.com/k03mad/ping-prom-exporter) \
-• [sys-prom-exporter](https://github.com/k03mad/sys-prom-exporter) \
-• [tin-invest-prom-exporter](https://github.com/k03mad/tin-invest-prom-exporter) \
-• [ya-iot-prom-exporter](https://github.com/k03mad/ya-iot-prom-exporter)
-
-:: [grafana-dashboards](https://github.com/k03mad/grafana-dashboards/tree/master/export) ::
-
 # [MosOblEIRC — Prometheus] exporter
 
 — [Use correct Node.JS version](.nvmrc) \
@@ -26,3 +16,4 @@ MOSOBLEIRC_PHONE=+71230001122 MOSOBLEIRC_PASSWORD=123 MOSOBLEIRC_EXPORTER_PORT=1
 — Update Prometheus `scrape_configs` \
 — [Import Grafana dashboard](grafana)
 
+[grafana-dashboards](https://github.com/k03mad/grafana-dashboards/tree/master/export)
